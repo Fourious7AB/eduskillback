@@ -1,0 +1,64 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/eduskilliq
+    username: root
+    password: 1213
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: eduskilliqfuturetech@gmail.com
+    password: lbrn ytaw akax kpok
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+razorpay:
+  key:
+    id: rzp_live_SXlnQlV2vdgKsI
+    secret: TPojzGvDNylrkhTR6isarWcy
+
+
+subscription:
+  test-mode: true
+  scheduler:
+    cron: 0 0 0 * * *   # run every 1 minute
+
+webhook:
+  enabled: true
+  secret: eduskill@2026_secure_webhook
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:YS1zdHJpbmctc2VjcmV0LWF0LWxlYXN0LTI1Ni1iaXRzLWxvbmc=}
+    issuer: ${JWT_ISSUER:eduskill}
+    access-ttl-seconds: ${JWT_ACCESS_TTLSECONDS:600}
+    refresh-ttl-seconds: ${JWT_REFRESH_TTL_SECONDS:86400}
+    refresh-token-cookie-name: ${JWT_REFRESH_COOKIE_NAME:refreshToken}
+    cookie-secure: ${JWT_COOKIE_SECURE:true}
+    cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
+    cookie-same-site: ${JWT_COOKIE_SAME_SITE:lax}
+    cookie-domain: ${JWT_COOKIE_DOMAIN:localhost}
+
+app:
+  cors:
+    front_url: http://localhost:5173
+  auth:
+    frontend:
+      success-redirect: http://localhost:5173/oauth/success
+      failure-redirect: http://localhost:5173/oauth/failure
+logging:
+  level:
+    org.springframework.security.authentication: DEBUG
+    org.springframework.security.web: DEBUG

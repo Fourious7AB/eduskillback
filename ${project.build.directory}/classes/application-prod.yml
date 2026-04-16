@@ -1,0 +1,70 @@
+server:
+  port: 8080
+  forward-headers-strategy: native
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: eduskilliqfuturetech@gmail.com
+    password: lbrn ytaw akax kpok
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+razorpay:
+  key:
+    id: ${RAZ_ID}
+    secret: ${RAZ_SECRET}
+
+
+subscription:
+  test-mode: false
+  scheduler:
+    cron: 0 0 */12 * * *
+
+webhook:
+  enabled: true
+  secret: eduskill@2026_secure_webhook
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:YS1zdHJpbmctc2VjcmV0LWF0LWxlYXN0LTI1Ni1iaXRzLWxvbmc=}
+    issuer: ${JWT_ISSUER:eduskill}
+    access-ttl-seconds: ${JWT_ACCESS_TTLSECONDS:600}
+    refresh-ttl-seconds: ${JWT_REFRESH_TTL_SECONDS:86400}
+    refresh-token-cookie-name: ${JWT_REFRESH_COOKIE_NAME:refreshToken}
+    cookie-secure: ${JWT_COOKIE_SECURE:false}
+    cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
+    cookie-same-site: ${JWT_COOKIE_SAME_SITE:none}
+    cookie-domain: ${JWT_COOKIE_DOMAIN:null}
+
+app:
+  cors:
+    front_url: ${FRONTEND_URL}
+  auth:
+    frontend:
+      success-redirect: http://localhost:5173/oauth/success
+      failure-redirect: http://localhost:5173/oauth/failure
+logging:
+  level:
+    org.springframework.security.authentication: DEBUG
+    org.springframework.security.web: DEBUG
