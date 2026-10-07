@@ -23,14 +23,14 @@ public class PaymentController {
             @RequestBody PaymentVerificationRequest request
     ) {
 
-        // 🔥 Convert to your existing DTO
+        // Convert to your existing DTO
         PaymentCallbackRequest callback = new PaymentCallbackRequest();
 
         callback.setRazorpayOrderId(request.getRazorpayOrderId());
         callback.setRazorpayPaymentId(request.getRazorpayPaymentId());
         callback.setRazorpaySignature(request.getRazorpaySignature());
 
-        // 🔥 Pass extra data
+        //  Pass extra data
         callback.setStudentName(request.getStudentName());
         callback.setEmail(request.getEmail());
         callback.setPhone(request.getPhone());
